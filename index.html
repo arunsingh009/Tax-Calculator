@@ -11,9 +11,48 @@
     <main>
         <h1>Income Tax Calculator</h1>
         <div class="box">
+            <div class="entry"> 
+                <input type="text" name="Income" id="income" required>
+                <select name="slab" id="slab" required>
+                    <option value="0" >Select Income Range</option>
+                    <option value="1">Below 2.5 Lakhs</option>
+                    <option value="5">Between 2.5 to 5.0 lakhs</option>
+                    <option value="20">Between 5.0 lakhs to 10.0 lakhs</option>
+                    <option value="30">Above 10 Lakhs</option>
+                </select>
+            </div>
+            <button onclick="tax()">Get Amount</button>
+            <div class="output">
+                <p id="result"></p>
+            </div>
 
         </div>
     </main>
+
+    <script>
+        
+        function tax(){
+        let input = +document.getElementById("income").value;
+        let limit = +document.getElementById("slab").value;
+        var out = document.getElementById("result");
+        let amount;
+            if(limit==0){
+                alert("Select Income Range");
+            }else if(limit==1){
+               out.innerHTML = "No need to pay Tax";
+            }else if(limit == 5){
+            amount = (input/100)*limit;
+            out.innerhtml= `Amount to be paid ${amount}`;
+            }else if(limit == 20){
+            amount = (input/100)*limit;
+            out.innerhtml= amount;
+            }else if(limit==30){
+            amount = (input/100)*limit;
+            out.innerhtml= amount;
+            console.log(amount);
+            }
+        }
+    </script>
     
 </body>
 </html>
